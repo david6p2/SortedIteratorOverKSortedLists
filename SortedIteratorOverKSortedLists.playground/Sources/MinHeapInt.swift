@@ -60,11 +60,30 @@ public class MinHeapInt: MinHeapable {
   }
   
   public func deleteKey(atIndex i: Int) {
-    print("Going to delete Key at index \(i) = \(heapArray[i])")
-    decreaseKey(atIndex: i, withNewValue: Int.min)
-    print("The heapArray after decreasing value at index \(i) is \(heapArray)")
-    _ = extractMin()
-    print("The heapArray after extract min is \(heapArray)")
+    
+    /// New implementation when the Element type doesn't have a min value like Int.min
+    print("Going to delete key: \(heapArray[i]) at index: \(i)")
+    print("The heapArray before is \(heapArray)")
+    if (i != heapSize-1) {
+      swap(&heapArray[i], &heapArray[heapSize-1])
+      // Set the last element as the new root
+      swap(&heapArray[0], &heapArray[i])
+    }
+    
+    _ = heapArray.popLast()
+
+    // Reduce the size of the heap
+    heapSize -= 1
+    // And Heapify
+    minHeapify(0)
+    print("The heapArray after removing the element is \(heapArray)")
+    ///
+    
+//    print("Going to delete Key at index \(i) = \(heapArray[i])")
+//    decreaseKey(atIndex: i, withNewValue: self.minValueForElementType())
+//    print("The heapArray after decreasing value at index \(i) is \(heapArray)")
+//    _ = extractMin()
+//    print("The heapArray after extract min is \(heapArray)")
   }
   
   public init() {
@@ -112,4 +131,7 @@ public class MinHeapInt: MinHeapable {
     }
   }
   
+  func minValueForElementType() -> Int {
+    return Int.min
+  }
 }

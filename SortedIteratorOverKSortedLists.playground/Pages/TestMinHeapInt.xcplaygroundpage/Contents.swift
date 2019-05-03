@@ -29,6 +29,7 @@ class MyTests : XCTestCase {
     XCTAssertEqual(h.heapArray, [1,15,4,45], "The returned array is not sorted as a min heap")
     print(h.getMin())
     XCTAssertEqual(h.getMin(), 1, "It didn't return the minimum value")
+    h.deleteKey(atIndex: 1)
   }
 }
 
