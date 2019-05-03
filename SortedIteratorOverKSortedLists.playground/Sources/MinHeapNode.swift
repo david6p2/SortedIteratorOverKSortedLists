@@ -83,7 +83,7 @@ public class MinHeapNode<Element: Comparable>: MinHeapable {
     print("The heapArray after swaping the last element is \(heapArray)")
     // Reduce the size of the heap
     heapSize -= 1
-    print("The heapSize after removin the min is \(heapSize)")
+    print("The heapSize after removing the min is \(heapSize)")
     // And Heapify
     minHeapify(0)
     
