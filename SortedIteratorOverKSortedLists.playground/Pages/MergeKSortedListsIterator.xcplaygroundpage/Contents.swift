@@ -45,6 +45,8 @@ while let value = iterator.next() {
     array.append(value)
 }
 
+print(array)
+
 let filter = array.first { $0 > 4 }
 filter
 //: [Next](@next)

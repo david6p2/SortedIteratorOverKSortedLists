@@ -26,7 +26,7 @@ func mergeKSortedLists(_ lists: [[Int]]) -> [Int] {
   // Create the array to return
   var output: [Int] = []
   // Create the minHeap
-  let heap = MinHeapNode()
+  let heap = MinHeapNode<Int>()
   // Add the first element of each k Arrays to the minHeap
   for (index,array) in lists.enumerated() {
     let heapNode = HeapNode(element:array[0], i: index, j:0)
