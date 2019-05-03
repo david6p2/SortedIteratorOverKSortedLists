@@ -1,14 +1,14 @@
 import Foundation
 
-public struct HeapNode : CustomStringConvertible {
+public struct HeapNode<Element: Comparable> : CustomStringConvertible {
   // Value of the node
-  public var element: Int
+  public var element: Element
   // Index of the array where the value was
   public var i: Int
   // Index of the value in the array where it belongs to
   public var j: Int
   
-  public init(element: Int, i: Int, j: Int) {
+  public init(element: Element, i: Int, j: Int) {
     self.element = element
     self.i = i
     self.j = j
@@ -19,9 +19,9 @@ public struct HeapNode : CustomStringConvertible {
   }
 }
 
-public class MinHeapNode: MinHeapable {
+public class MinHeapNode<Element: Comparable>: MinHeapable {
   // Properties
-  public var heapArray: [HeapNode]
+  public var heapArray: [HeapNode<Element>]
   public var heapSize: Int
   
   public init() {
@@ -68,11 +68,11 @@ public class MinHeapNode: MinHeapable {
     return (2*i + 2)
   }
   
-  public func getMin() -> HeapNode {
+  public func getMin() -> HeapNode<Element> {
     return heapArray[0]
   }
   
-  public func extractMin() -> HeapNode {
+  public func extractMin() -> HeapNode<Element> {
     
     // Save the root that is the minimum
     let root = heapArray[0]
@@ -90,7 +90,7 @@ public class MinHeapNode: MinHeapable {
     return root
   }
   
-  public func decreaseKey(atIndex i: Int, withNewValue value: HeapNode) {
+  public func decreaseKey(atIndex i: Int, withNewValue value: HeapNode<Element>) {
     var i = i
     heapArray[i].element = value.element
     
@@ -101,7 +101,7 @@ public class MinHeapNode: MinHeapable {
     }
   }
   
-  public func insertKey(_ key: HeapNode) {
+  public func insertKey(_ key: HeapNode<Element>) {
     print("Going to insert \(key)")
     print("The heapSize is \(heapSize)")
     // First insert the new key at the end
