@@ -76,14 +76,11 @@ public class MinHeapNode<Element: Comparable>: MinHeapable {
     
     // Save the root that is the minimum
     let root = heapArray[0]
-    print("The heapArray is \(heapArray)")
     // Set the last element as the new root
     heapArray[0] = heapArray[heapSize-1]
     _ = heapArray.popLast()
-    print("The heapArray after swaping the last element is \(heapArray)")
     // Reduce the size of the heap
     heapSize -= 1
-    print("The heapSize after removing the min is \(heapSize)")
     // And Heapify
     minHeapify(0)
     
@@ -102,29 +99,21 @@ public class MinHeapNode<Element: Comparable>: MinHeapable {
   }
   
   public func insertKey(_ key: HeapNode<Element>) {
-    print("Going to insert \(key)")
-    print("The heapSize is \(heapSize)")
     // First insert the new key at the end
     heapSize += 1
     var i = heapSize - 1
-    print("The index is \(i)")
     heapArray.append(key)
     
-    print("The key is \(key)")
-    
-    print("The heapArray is \(heapArray)")
     // Fix the min heap property if it is violated
     while (i != 0 && heapArray[parent(i)].element > heapArray[i].element) {
       swap(&heapArray[i], &heapArray[parent(i)])
       i = parent(i)
     }
-    print("The final heapArray is \(heapArray)")
   }
   
   public func deleteKey(atIndex i: Int) {
     
     /// New implementation when the Element type doesn't have a min value like Int.min
-    print("The heapArray is \(heapArray)")
     swap(&heapArray[i], &heapArray[heapSize-1])
     
     // Set the last element as the new root
@@ -135,7 +124,6 @@ public class MinHeapNode<Element: Comparable>: MinHeapable {
     heapSize -= 1
     // And Heapify
     minHeapify(0)
-    print("The heapArray after removing the element is \(heapArray)")
     ///
 //    print("Going to delete Key at index \(i) = \(heapArray[i])")
 //    let newValue = HeapNode(element: self.minValueForElementType(), i: heapArray[i].i, j: heapArray[i].j)
